@@ -24,9 +24,10 @@ const MyItems = () => {
             }
 
             try {
-                console.log("Fetching items for email:", saveUser.email); // ডিবাগিং
+                //console.log("Fetching items for email:", saveUser.email);
+
                 const response = await axiosSecure.get(`/allItems?email=${saveUser.email}`);
-                console.log("API Response:", response.data); // ডিবাগিং
+                //console.log("API Response:", response.data);
                 setMyItems(response.data);
             } catch (error) {
                 console.error("Failed to fetch items:", error.response?.data || error.message);
@@ -58,9 +59,9 @@ const MyItems = () => {
         if (!confirm.isConfirmed) return;
 
         try {
-            console.log("Deleting item with ID:", id); // ডিবাগিং
-            const response = await axios.delete(`http://localhost:3000/items/${id}`);
-            console.log("Delete Response:", response.data); // ডিবাগিং
+            //console.log("Deleting item with ID:", id);
+            const response = await axios.delete(`https://a11-lost-found-server.vercel.app/items/${id}`);
+            //console.log("Delete Response:", response.data);
 
             if (response.data.deletedCount > 0) {
                 Swal.fire("Deleted!", "Your item has been deleted.", "success");
